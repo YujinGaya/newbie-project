@@ -1,0 +1,16 @@
+.navbar-main {
+    background: linear-gradient(to left, #ff00cc , #333399);
+}
+
+.btn-navbar-right {
+    background-color: transparent;
+    color: white;
+    padding-right: 0;
+}
+.btn-navbar-right:hover {
+    color: white;
+}
+
+.footer {
+    padding-top: 40px
+}

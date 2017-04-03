@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title> 등록하기 - 오늘 </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body style="padding-top:70px">
+	<nav class="navbar navbar-dark navbar-full navbar-fixed-top navbar-main bg-faded">
+		<div class="container">
+			<div class="row col-sm-8 offset-sm-2">
+				<div class="row">
+					<a class="navbar-brand" href="/"> 오늘 </a>
+					<div class="form-inline float-xs-right">
+	    				<a class="btn btn-navbar-right" href="/"> 목록보기 </a>
+	  				</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container" ng-app="search" ng-controller="searchController as search">
+
+		<div class="row">
+			<div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+                <h1> 행사 등록하기 </h1>
+                <hr>
+				{% if error_message %} <p><strong>{{ error_message }}</strong></p> {% endif %}
+                <form action="/events/" method="post">
+					<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                    <div class="form-group row">
+                        <label for="title" class="col-sm-2 col-form-label"> 이름 </label>
+                        <div class="col-sm-10">
+                            <input name="title" type="text" class="form-control" id="title" placeholder="행사 이름">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="description" class="col-sm-2 col-form-label"> 설명 </label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="description" rows="8" cols="80" placeholder="행사 설명"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="time" class="col-sm-2 col-form-label"> 시간 </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="time" type="datetime-local" placeholder="2011-08-19T13:45:00">
+                        </div>
+                    </div>
+                    {#
+					<fieldset class="form-group row">
+                        <legend class="col-form-legend col-sm-2"> 밥 </legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="bab" value="yes" checked>
+                                    밥을 제공합니다. &mdash; 거짓말은 농농.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="bab" value="no">
+                                    밥을 제공하지 않습니다.
+                                </label>
+                            </div>
+
+                        </div>
+                    </fieldset>
+					#}
+
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                            <div class="g-recaptcha" style="display: inline-block;" data-sitekey="6LdD_AwUAAAAAAr2OVZ1tj8SJRmQRqVP89vwhLv1"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary"> 등록 </button>
+                        </div>
+                    </div>
+                </form>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer container text-xs-center">
+		<p>
+			Designed and built by <strong>yujingaya</strong>.
+			Maintained by <strong>yujingaya</strong>. <br>
+			SPARCS newbie project
+		</p>
+	</div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+	<script src="/static/js/search.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+  </body>
+</html>
